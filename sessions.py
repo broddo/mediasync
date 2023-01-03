@@ -14,6 +14,4 @@ class BaseUrlSession(requests.Session):
     def request(self, method, url, *args, **kwargs):
         """Send the request after generating the complete URL."""
         url = urllib.parse.urljoin(self.base_url, url)
-        return super().request(
-            method, url, headers=self.extra_headers, *args, **kwargs
-        )
+        return super().request(method, url, headers=self.extra_headers, *args, **kwargs)
