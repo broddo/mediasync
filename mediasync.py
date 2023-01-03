@@ -9,10 +9,10 @@ from mediabrowser import CreateMediaServerfromSettings
 def load_settings(path):
     with path.open("r") as file:
         settings = json.loads(file.read())
-        if "source" not in settings or "destination" not in settings:
-            raise ValueError(
-                f"Both a source and desintation object must be defined in {path}"
-            )
+        if "source" not in settings:
+            raise ValueError(f"A source object must be defined in {path}")
+        elif "destination" not in settings:
+            raise ValueError(f"A desintation object must be defined in {path}")
     return settings
 
 
