@@ -96,8 +96,8 @@ def diff(options):
     src = CreateMediaServerfromSettings(settings["source"])
     dst = CreateMediaServerfromSettings(settings["destination"])
 
-    diff_run("Movie")
-    diff_run("Episode")
+    diff_run(src, dst, "Movie")
+    diff_run(src, dst, "Episode")
 
 
 def main():
