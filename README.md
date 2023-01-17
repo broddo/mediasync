@@ -14,10 +14,26 @@ Python **3.9**
 
 The script should work on older versions of both Emby and Jellyfin as their respective APIs haven't changed much. 
 
-## Configuration
-Edit the supplied `settings.json` file in order to provide the script with the URLs and API keys of the source and destination server. You will need to create API keys in both your source and destination servers. Please refer to Emby/Jellyfin documentation in order to find out how to do this. 
+## Installation
+I've provided a setup.py file so that the script can be installed. Just run the following from the root of the project directory to install it:
+```
+python3 -m pip install .
+```
 
-Example configuration:
+Once installed, the script can be run by typing:
+```
+mediasync settings.json sync
+```
+
+If you choose not to install, just run mediasyncmain.py file from the mediasync directory instead:
+```
+python3 mediasync.py settings.json sync
+```
+
+## Configuration
+A JSON settings file is required in order to provide the script with the API keys and URLs of your servers. An example of this file is provided in the repository, called `settings.json`. You will need to create API keys in both your source and destination servers. Please refer to Emby/Jellyfin documentation in order to find out how to do this. 
+
+Here is an example configuration. 
 
 ```
 {
@@ -34,15 +50,15 @@ Example configuration:
 }
 ```
 
-## Usage
+## Options
 ### Sync option 
 ```
-python3 mediasync.py settings.json sync
+mediasync settings.json sync
 ```
 The sync option synchronizes the watch-list from the source server to the destination server. Missing users are created on the destination server and given a long random password by default (a default password can be provided with the -p option).
 
 ### Diff option
 ```
-python3 mediasync.py settings.json diff
+mediasync settings.json diff
 ```
 The diff option compares media items on the source server to the destination server. Any items that cannot be matched are printed out for the user to examine. This can be useful to run first to make sure that the majority of your files have been recognized correctly by your media servers
